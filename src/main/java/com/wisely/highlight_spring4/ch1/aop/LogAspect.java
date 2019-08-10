@@ -1,7 +1,5 @@
 package com.wisely.highlight_spring4.ch1.aop;
 
-import java.lang.reflect.Method;
-
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
@@ -9,6 +7,10 @@ import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.lang.reflect.Parameter;
 
 //5.编写切面。
 @Aspect //1 通过@Aspect注解声明一个切面。
@@ -35,6 +37,22 @@ public class LogAspect {
     public void before(JoinPoint joinPoint) {
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
         Method method = signature.getMethod();
+        Parameter[] parameters = method.getParameters();
+        //todo 感觉这里可以获取方法的参数值，下回实验
+//        Object[] paramValues = new Object[parameters.length];
+
+//        for(Parameter parameter:parameters){
+//            String value = parameter.getName();
+//            paramValues[0] = value;
+//        }
+//        try {
+//            String invoke = (String)method.invoke(method.getClass(), paramValues[0]);
+//        } catch (IllegalAccessException e) {
+//            e.printStackTrace();
+//        } catch (InvocationTargetException e) {
+//            e.printStackTrace();
+//        }
+
         System.out.println("方法规则式拦截," + method.getName());
     }
 }

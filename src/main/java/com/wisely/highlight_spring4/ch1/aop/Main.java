@@ -8,7 +8,7 @@ public class Main {
         DemoAnnotationService demoAnnotationService = context.getBean(DemoAnnotationService.class);
         DemoMethodService demoMethodService = context.getBean(DemoMethodService.class);
         demoAnnotationService.add();
-        demoMethodService.add();
+        demoMethodService.add("aop");
         context.close();
     }
 }
