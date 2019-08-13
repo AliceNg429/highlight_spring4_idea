@@ -13,7 +13,7 @@ import org.springframework.core.io.Resource;
 
 @Configuration
 @ComponentScan("com.wisely.highlight_spring4.ch2.el")
-@PropertySource("classpath:com/wisely/highlight_spring4/ch2/el/test.properties")//7 注入配置文件。
+@PropertySource("classpath:test.properties")//7 注入配置文件。
 public class ElConfig {
     @Value("I Love You!") //1 注入普通字符串。
     private String normal;
@@ -23,7 +23,7 @@ public class ElConfig {
     private double randomNumber;
     @Value("#{demoService.another}") //4 注入其他Bean属性。
     private String fromAnother;
-    @Value("classpath:com/wisely/highlight_spring4/ch2/el/test.txt") //5 注入文件资源。
+    @Value("classpath:test.txt") //5 注入文件资源。
     private Resource testFile;
     @Value("http://www.baidu.com") //6 注入网址资源。
     private Resource testUrl;
